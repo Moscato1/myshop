@@ -31,8 +31,11 @@
 
             }) }}
             {% if produit.ReservationText == '' %}
-            <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_detail' ? 'Créer' :
-                'Modifier' }}</button>
+            <div class="col-4">
+
+                <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_detail' ?
+                    'Créer'}}</button>
+            </div>
 
             {% else %}
             <div class="row">

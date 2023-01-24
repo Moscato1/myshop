@@ -15,17 +15,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProduitController extends AbstractController
 {
     private $managerRegistry;
-    private $productRepository;
+    
 
     public function __construct(ManagerRegistry $managerRegistry, ProduitRepository $produitRepository)
     {
         $this->managerRegistry = $managerRegistry;
-        $this->productRepository = $produitRepository;
+       
     }
 
 
 
-
+// Affiche la liste de tous les produits 
     #[Route('/produit', name: 'produit')]
     public function index( ProduitRepository $produitRepository): Response
     {
@@ -34,7 +34,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-
+// Affiche le formulaire pour ajouter un produit 
     #[Route('/produit/create', name: 'produit_create')]
     public function create(Request $request): Response
     {
@@ -42,14 +42,15 @@ class ProduitController extends AbstractController
         $form = $this->createForm(ProductType::class, $produit);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $produit->setCreatedAt(new \DateTimeImmutable());
             $manager = $this->managerRegistry->getManager();
             $manager->persist($produit);
             $manager->flush();
 
-            $this->addFlash('success', 'Le produit a bien été créé');
-            return $this->redirectToRoute('home_page');
+            $this->addFlash('success', 'Le produit a bien été Ajouté ');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('produit/form.html.twig', [
@@ -59,7 +60,7 @@ class ProduitController extends AbstractController
 
 
 
-
+// Affiche les detais d'un produit 
     #[Route('/produit/{id}', name: 'produit_detail')]
     public function show(Produit $produit,ProduitRepository $produitRepository, int $id, Request $request): Response
     {

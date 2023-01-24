@@ -1,58 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ app.request.attributes.get('_route') == 'produit_create' ? 'Création' : 'Modification' }} produit{%
+{% block title %}Ajouter un produit{%
 endblock %}
 
 {% block body %}
 {{ form_start(produitForm) }}
+<div class="container-fluid text-center">
 
-<div class="row">
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(produitForm.title, {
+            'label': 'Titre',
+            'attr': {
+            'placeholder': 'Lampe nanoleaf'
+            }
+            }) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(produitForm.price, {
+            'label': 'Prix (en €)',
+            'attr': {
+            'placeholder': 'Ex.: 123.45'
+            }
+            }) }}
+        </div>
 
-    {{ form_row(produitForm.title, {
-    'label': 'Titre',
-    'attr': {
-    'placeholder': 'Lampe nanoleaf'
-    }
-    }) }}
 
-    {{ form_row(produitForm.price, {
-        'label': 'Prix (en €)',
-        'attr': {
-        'placeholder': 'Ex.: 123.45'
-        }
-        }) }}
+
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(produitForm.city, {
+            'label': 'Ville',
+            'attr': {
+            'placeholder': 'ville'
+            }
+            }) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(produitForm.postal_code, {
+            'label': 'zip',
+            'attr': {
+            'placeholder': 'ex: 5900'
+            }
+            }) }}
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 offset-3">
+
+                {{ form_row(produitForm.description, {
+                'label': 'description',
+                'attr': {
+                'placeholder': 'Ajoutez une description'
+                }
+                }) }}
+            </div>
+
+        </div>
+
+    </div>
+    <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_create' ? 'Créer' : 'Modifier'
+        }}</button>
+    {{ form_end(produitForm) }}
+
 </div>
 
-<div>
-    {{ form_row(produitForm.description, {
-        'label': 'description',
-        'attr': {
-        'placeholder': 'Ajoutez une description'
-        }
-        }) }}
-
-      
-
-</div>
-
-
-<div>
-    {{ form_row(produitForm.city, {
-        'label': 'Ville',
-        'attr': {
-        'placeholder': 'ville'
-        }
-        }) }}
-        
-    {{ form_row(produitForm.postal_code, {
-    'label': 'zip',
-    'attr': {
-    'placeholder': 'ex: 5900'
-    }
-    }) }}
-</div>
-<button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_create' ? 'Créer' : 'Modifier' }}</button>
-{{ form_end(produitForm) }}
 
 
 
