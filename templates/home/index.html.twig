@@ -22,11 +22,10 @@
                 <p class="card-text text-center">Produit n°{{element.id}}</p>
                 
                 <p class="card-text text-center">Prix: {{element.price}}€</p>
-              <p class="card-text text-center">Ville: {{element.city}}</p>
-              <p class="card-text text-center">Code postal: {{element.PostalCode}}</p>
+              
             </div>
             <div class="card-footer">
-                <a href="{{ path('produit_detail', {'id': element.id}) }}" class="btn btn-success">Voir plus </a>
+                <a href="{{ path('produit_detail', {'id': element.id}) }}" class="btn btn-success">Consulter le produit </a>
             </div>
           </div>
         </div>
