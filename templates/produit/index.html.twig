@@ -9,12 +9,13 @@
 <div class="container">
     <div class="row">
         {% for element in produits %}
-        <div class="col-3">
-            <div class="card text-bg-primary m-5" style="max-width: 18rem;">
-                <div class="card-header text-center">titre: {{element.title|upper}}</div>
+        <div class="col-4">
+            <div class="card text-bg-dark text-light m-5" style="max-width: 18rem;">
+                <div class="card-header text-center text-dark bg-warning">Titre: {{element.title|upper}}</div>
                 <div class="card-body">
             
-                  
+                    
+                  <p class="card-text text-center">Produit n°: {{element.id}}</p>
                   <p class="card-text text-center">description: {{element.description}}</p>
                   <p class="card-text text-center">prix: {{element.price}}€</p>
                   <p class="card-text text-center">ville: {{element.city}}</p>
