@@ -5,14 +5,14 @@ endblock %}
 
 {% block body %}
 {{ form_start(produitForm) }}
-<div class="container-fluid text-center">
+<div class="container mt-5 pt-5 text-center">
 
     <div class="row">
         <div class="col-6">
             {{ form_row(produitForm.title, {
             'label': 'Titre',
             'attr': {
-            'placeholder': 'Lampe nanoleaf'
+            'placeholder': 'Ex: Lampe nanoleaf'
             }
             }) }}
         </div>
@@ -37,15 +37,15 @@ endblock %}
             {{ form_row(produitForm.city, {
             'label': 'Ville',
             'attr': {
-            'placeholder': 'ville'
+            'placeholder': 'Ex: Lille'
             }
             }) }}
         </div>
         <div class="col-6">
             {{ form_row(produitForm.postal_code, {
-            'label': 'zip',
+            'label': 'Code Postal:',
             'attr': {
-            'placeholder': 'ex: 5900'
+            'placeholder': 'Ex: 5900'
             }
             }) }}
         </div>
@@ -55,9 +55,9 @@ endblock %}
             <div class="col-6 offset-3">
 
                 {{ form_row(produitForm.description, {
-                'label': 'description',
+                'label': 'Description',
                 'attr': {
-                'placeholder': 'Ajoutez une description'
+                'placeholder': 'Ajouter une description'
                 }
                 }) }}
             </div>
