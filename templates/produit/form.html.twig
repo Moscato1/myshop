@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app.request.attributes.get('_route') == 'produit_create' ? 'Création' : 'Modification' }} produit{%
+endblock %}
+
+{% block body %}
+{{ form_start(produitForm) }}
+
+<div class="row">
+
+    {{ form_row(produitForm.title, {
+    'label': 'Titre',
+    'attr': {
+    'placeholder': 'Lampe nanoleaf'
+    }
+    }) }}
+
+    {{ form_row(produitForm.price, {
+        'label': 'Prix (en €)',
+        'attr': {
+        'placeholder': 'Ex.: 123.45'
+        }
+        }) }}
+</div>
+
+<div>
+    {{ form_row(produitForm.description, {
+        'label': 'description',
+        'attr': {
+        'placeholder': 'Ajoutez une description'
+        }
+        }) }}
+
+      
+
+</div>
+
+
+<div>
+    {{ form_row(produitForm.city, {
+        'label': 'Ville',
+        'attr': {
+        'placeholder': 'ville'
+        }
+        }) }}
+        
+    {{ form_row(produitForm.postal_code, {
+    'label': 'zip',
+    'attr': {
+    'placeholder': 'ex: 5900'
+    }
+    }) }}
+</div>
+<button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_create' ? 'Créer' : 'Modifier' }}</button>
+{{ form_end(produitForm) }}
+
+
+
+{% endblock %}

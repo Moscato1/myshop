@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}Details Produit{% endblock %}
+
+{% block body %}
+<div class="text-center">
+
+    <h1>Details</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2>{{produit.title |upper}}</h2>
+    </div>
+
+    <div class="row">
+        <span>
+            <p>{{produit.description}}</p>
+        </span>
+        <span>
+            <p>Prix : {{produit.price}}€</p>
+        </span>
+        <span>Ville: {{produit.city}} Code Postal: {{produit.PostalCode}}</span>
+
+
+    </div>
+    <div class="row">
+        {{ form_start(ReservationForm) }}
+        <div class="row">
+            {{ form_row(ReservationForm.reservation_text, {
+            'label': 'Demande réservation',
+
+            }) }}
+            {% if produit.ReservationText == '' %}
+            <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'produit_detail' ? 'Créer' :
+                'Modifier' }}</button>
+
+            {% else %}
+            <div class="row">
+                <div class="col-4">
+
+                    <button type="button" class="btn btn-lg btn-primary" disabled>Deja Réservé</button>
+                </div>
+            </div>
+            <span>
+                <p>Message de reservation : {{produit.ReservationText}}</p>
+            </span>
+
+            {% endif %}
+        </div>
+        {{ form_end(ReservationForm) }}
+    </div>
+</div>
+
+
+{% endblock %}
